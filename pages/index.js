@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Image from 'next/image'
 
 import styles from "@styles/Home.module.css";
 import Button from "@components/Button";
@@ -38,7 +39,7 @@ export default function Home() {
                     <>
                         <h2>{user.name}</h2>
                         <h2>{user.email}</h2>
-                        <img alt="Avatar" src={user.avatar} />
+                        <Image alt="Avatar" src={user.avatar} />
                     </>
                 )}
             </main>
