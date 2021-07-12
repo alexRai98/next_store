@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
+import { registerUser } from "@services/user";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBj3QlPNylWzKo0_-b3YPgNIRyHABp-U6Y",
@@ -31,5 +32,26 @@ export const onAuthStateChange = (onChange) => {
 
 export const loginWithGoogle = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    return firebase.auth().signInWithPopup(googleProvider);
+    return firebase
+        .auth()
+        .signInWithPopup(googleProvider)
+        .then((user) => {
+            const data = {
+                avatar: user.user.photoURL,
+                email: user.user.email,
+                name: user.user.displayName
+            };
+            registerUser(data).then(
+                (result) => {
+                    console.log("usuario registreado", result);
+                },
+                (err) => {
+                    console.log("ERROR", err);
+                }
+            );
+        });
+};
+
+export const logout = () => {
+    return firebase.auth().signOut();
 };

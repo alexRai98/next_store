@@ -3,7 +3,8 @@ import Head from "next/head";
 
 import styles from "@styles/Home.module.css";
 import Button from "@components/Button";
-import { loginWithGoogle, onAuthStateChange } from "@firebase/client";
+
+import { loginWithGoogle, onAuthStateChange, logout } from "@firebase/client";
 
 export default function Home() {
     const [user, setUser] = useState(undefined);
@@ -11,9 +12,7 @@ export default function Home() {
         onAuthStateChange(setUser);
     }, []);
     const handleLogin = () => {
-        loginWithGoogle()
-            .then((user) => console.log({ user }))
-            .catch((error) => console.log({ error }));
+        loginWithGoogle();
     };
 
     return (
@@ -30,8 +29,10 @@ export default function Home() {
             <main className={styles.main}>
                 <h1>Welcome</h1>
                 <h3>Handle your buy prices</h3>
-                {user === null && (
+                {user === null ? (
                     <Button onClick={handleLogin}>Login with google</Button>
+                ) : (
+                    <button onClick={logout}>Log out</button>
                 )}
                 {user && (
                     <>
