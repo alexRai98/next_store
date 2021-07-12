@@ -4,7 +4,11 @@
         "paths": {
             "@styles/*": ["styles/*"],
             "@components/*": ["components/*"],
-            "@firebase/*": ["firebase/*"]
+            "@firebase/*": ["firebase/*"],
+            "@util/*": ["util/*"],
+            "@model/*": ["model/*"],
+            "@api/*" : ["pages/api/*"],
+            "@services/*" : ["services/*"]
         }
     }
 }
