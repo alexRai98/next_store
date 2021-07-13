@@ -36,7 +36,7 @@ export default function Home() {
                 )}
                 {user && (
                     <>
-                        <h1>Welcome {user.name}</h1>
+                        <h1>Welcome!!! {user.name}</h1>
                         <img alt="Avatar" src={user.avatar} />
                         <Button colorScheme="red" variant="solid" onClick={logout} marginY="15px">Logout</Button>
                         <Link href="stores">

@@ -47,4 +47,14 @@ export default async function handler(req, res) {
             res.status(400).json({ success: false });
         }
     }
+    // This funtion Get a espedifict Store
+    else if (req.method === "Delete") {
+        try {
+            const store = await Store.find({ _id });
+            res.status(200).json({ success: true, data: store });
+        } catch (error) {
+            console.log("error", error);
+            res.status(400).json({ success: false });
+        }
+    }
 }
