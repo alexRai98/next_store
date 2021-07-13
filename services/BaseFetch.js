@@ -1,4 +1,4 @@
-import { HttpError, ConnectionError } from "./CustomErrors";
+import { HttpError, ConnectionError } from "@services/CustomErrors";
 
 
 export function FetchServicesCustomErrors({ endpoint, method = "GET", body }) {

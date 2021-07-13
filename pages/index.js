@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from 'next/image'
+import Link from "next/link";
 
 import styles from "@styles/Home.module.css";
 import Button from "@components/Button";
@@ -30,16 +30,17 @@ export default function Home() {
             <main className={styles.main}>
                 <h1>Welcome</h1>
                 <h3>Handle your buy prices</h3>
-                {user === null ? (
+                {user === null && (
                     <Button onClick={handleLogin}>Login with google</Button>
-                ) : (
-                    <button onClick={logout}>Log out</button>
                 )}
                 {user && (
                     <>
-                        <h2>{user.name}</h2>
-                        <h2>{user.email}</h2>
-                        <Image alt="Avatar" src={user.avatar} />
+                        <h2>Welcome {user.name}</h2>
+                        <img alt="Avatar" src={user.avatar} />
+                        <button onClick={logout}>Logout</button>
+                        <Link href="stores">
+                            <a>Dashboard</a>
+                        </Link>
                     </>
                 )}
             </main>

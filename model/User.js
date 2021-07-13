@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema(
         avatar: {
             type: String
         },
-        state: {
+        enable: {
             type: Boolean,
             default: false
         }
