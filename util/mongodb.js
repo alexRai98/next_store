@@ -6,6 +6,7 @@ const MONGO_URI = "mongodb+srv://rai_98:XJD9AJv3u4a3yIAT@webstore.nu2qu.mongodb.
 
 export async function dbConnect() {
     if (connection.isConnected) {
+        console.log("Estamos conectados")
         return;
     }
 
@@ -13,6 +14,6 @@ export async function dbConnect() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
+    console.log("Nos conectamos")
     connection.isConnected = db.connections[0].readyState;
 }
