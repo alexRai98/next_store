@@ -3,7 +3,7 @@ import { Box, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { getAllProducts } from "@services/Product";
 
 export default function Home({ store }) {
-    const data = store.data[0];
+    const data = store.data && store.data[0];
     return (
         <div>
             <Head>
@@ -24,7 +24,7 @@ export default function Home({ store }) {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {data.products.map((product) => (
+                            {data && data.products.map((product) => (
                                 <Tr key={product._id}>
                                     <Td>{product.name}</Td>
                                     <Td>{product.unid}</Td>
