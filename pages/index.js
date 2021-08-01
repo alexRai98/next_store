@@ -39,7 +39,7 @@ export default function Home() {
                         <h1>Welcome!!! {user.name}</h1>
                         <img alt="Avatar" src={user.avatar} />
                         <Button colorScheme="red" variant="solid" onClick={logout} marginY="15px">Logout</Button>
-                        <Link href="stores">
+                        <Link href="store">
                             <Button colorScheme="teal" variant="outline">Dashboard</Button>
                         </Link>
                     </>
