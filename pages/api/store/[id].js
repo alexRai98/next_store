@@ -6,13 +6,10 @@ import Store from "@model/Store";
 dbConnect();
 
 export default async function handler(req, res) {
-    // This funtion Register a new Product
     const { id } = req.query;
     const _id = mongoose.Types.ObjectId(id);
     if (req.method === "POST") {
-        console.log("Vamos a registrar un producto")
         const { body } = req;
-        console.log("cuerpoo", body)
         const productRedister = {
             name: body.name,
             unid: body.unid,
@@ -39,6 +36,8 @@ export default async function handler(req, res) {
     }
     // This funtion Get a espedifict Store
     else if (req.method === "GET") {
+        console.log("MIRAMEEE")
+        console.log("iddd",_id)
         try {
             const store = await Store.find({ _id });
             res.status(200).json({ success: true, data: store });

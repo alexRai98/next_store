@@ -3,12 +3,13 @@ import { FetchServicesCustomErrors } from "./BaseFetch";
 
 const API_ROOT = getApiRoot();
 
-export function registerUser(body) {
-    const endpoint = `${API_ROOT}/user`;
+export function registerProduct(body, storeId) {
+    const endpoint = `${API_ROOT}/store/${storeId}`;
     return FetchServicesCustomErrors({ endpoint, method: "POST", body });
 }
 
-export function getUsers() {
-    const endpoint = `${API_ROOT}/user`;
+export function getAllProducts(storeId) {
+    const endpoint = `${API_ROOT}/store/${storeId}`;
+    console.log("enpoint", endpoint)
     return FetchServicesCustomErrors({ endpoint });
 }
