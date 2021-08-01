@@ -3,7 +3,6 @@ import { Box, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { getAllProducts } from "@services/Product";
 
 export default function Home({ store }) {
-    console.log({ store });
     const data = store.data[0];
     return (
         <div>
