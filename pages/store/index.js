@@ -4,15 +4,16 @@ import { getAllProducts } from "@services/Product";
 
 export default function Home({ store }) {
     console.log({ store });
+    const data = store.data[0];
     return (
         <div>
             <Head>
-                <title>Products</title>
+                <title>Product</title>
             </Head>
 
             <section>
                 <Box>
-                    <h1>Productos</h1>
+                    <h1>Store - {data.name}</h1>
                     <Table variant="simple">
                         <Thead>
                             <Tr>
@@ -24,11 +25,17 @@ export default function Home({ store }) {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td isNumeric>25.4</Td>
-                            </Tr>
+                            {data.products.map((product) => (
+                                <Tr key={product._id}>
+                                    <Td>{product.name}</Td>
+                                    <Td>{product.unid}</Td>
+                                    <Td>{product.historyPurchasePrice[0]}</Td>
+                                    <Td isNumeric>
+                                        {product.hisrorySalePrice[0]}
+                                    </Td>
+                                    <Td>{product.description}</Td>
+                                </Tr>
+                            ))}
                         </Tbody>
                     </Table>
                 </Box>
@@ -40,8 +47,7 @@ export default function Home({ store }) {
 export async function getStaticProps(context) {
     let store = {};
     try {
-        store = await getAllProducts("60ed1dd5638dc3257dd1f29f");
-        console.log("estoree!!", store)
+        store = await getAllProducts();
     } catch (e) {
         console.log("Error", e);
     }

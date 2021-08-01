@@ -1,5 +1,3 @@
-import User from "@model/User";
-
 const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema(
@@ -12,7 +10,6 @@ const ProductSchema = new mongoose.Schema(
         hisrorySalePrice: [],
         unid: String,
         description: String
-        // provider: String
     },
     {
         versionKey: false,
@@ -27,7 +24,6 @@ const StoreSchema = new mongoose.Schema(
             require: [true, "Please add the name"],
             unique: true
         },
-        // users: [User],
         products: [ProductSchema]
     },
     {

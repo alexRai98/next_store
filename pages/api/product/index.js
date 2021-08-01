@@ -6,7 +6,8 @@ import Store from "@model/Store";
 dbConnect();
 
 export default async function handler(req, res) {
-    const { id } = req.query;
+    // const { id } = req.query;
+    const id = "60ed1dd5638dc3257dd1f29f"
     const _id = mongoose.Types.ObjectId(id);
     if (req.method === "POST") {
         const { body } = req;
@@ -16,7 +17,6 @@ export default async function handler(req, res) {
             historyPurchasePrice: [body.purchasePrice],
             hisrorySalePrice: [body.salePrice]
         };
-        console.log("Product register",productRedister)
         try {
             const product = await Store.findOneAndUpdate(
                 {
@@ -30,19 +30,15 @@ export default async function handler(req, res) {
             );
             res.status(201).json({ success: true, data: product });
         } catch (error) {
-            console.log("error", error);
             res.status(400).json({ success: false });
         }
     }
     // This funtion Get a espedifict Store
     else if (req.method === "GET") {
-        console.log("MIRAMEEE")
-        console.log("iddd",_id)
         try {
             const store = await Store.find({ _id });
             res.status(200).json({ success: true, data: store });
         } catch (error) {
-            console.log("error", error);
             res.status(400).json({ success: false });
         }
     }
@@ -52,7 +48,6 @@ export default async function handler(req, res) {
             const store = await Store.find({ _id });
             res.status(200).json({ success: true, data: store });
         } catch (error) {
-            console.log("error", error);
             res.status(400).json({ success: false });
         }
     }
