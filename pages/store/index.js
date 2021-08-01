@@ -24,15 +24,15 @@ export default function Home({ store }) {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {data && data.products.map((product) => (
-                                <Tr key={product._id}>
-                                    <Td>{product.name}</Td>
-                                    <Td>{product.unid}</Td>
-                                    <Td>{product.historyPurchasePrice[0]}</Td>
+                            {data && data.products.map((product, index) => (
+                                <Tr key={index}>
+                                    <Td>{product && product.name}</Td>
+                                    <Td>{product && product.unid}</Td>
+                                    <Td>{product && product.historyPurchasePrice[0]}</Td>
                                     <Td isNumeric>
-                                        {product.hisrorySalePrice[0]}
+                                        {product && product.hisrorySalePrice[0]}
                                     </Td>
-                                    <Td>{product.description}</Td>
+                                    <Td>{product && product.description}</Td>
                                 </Tr>
                             ))}
                         </Tbody>
