@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
 import { getAllProducts } from "@services/Product";
-import { Section, Title } from "./indexStyle";
+import { Section, Title } from "@styles/indexStyle";
 
 export default function Home({ store }) {
     const data = store.data && store.data[0];
