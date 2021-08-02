@@ -12,7 +12,7 @@ export default function Home({ store }) {
             </Head>
 
             <Section>
-                <Title>Store - {data.name}</Title>
+                <Title>Store - {data && data.name}</Title>
                 <Box>
                     <Button colorScheme="teal" variant="outline" size="md" w="100%" my="15px">Registrar Producto</Button>
                 </Box>
