@@ -1,6 +1,7 @@
 import Head from "next/head";
-import { Box, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { Box, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
 import { getAllProducts } from "@services/Product";
+import { Section, Title } from "./indexStyle";
 
 export default function Home({ store }) {
     const data = store.data && store.data[0];
@@ -10,35 +11,37 @@ export default function Home({ store }) {
                 <title>Product</title>
             </Head>
 
-            <section>
+            <Section>
+                <Title>Store - {data.name}</Title>
                 <Box>
-                    <h1>Store - {data.name}</h1>
-                    <Table variant="simple">
-                        <Thead>
-                            <Tr>
-                                <Th>Producto</Th>
-                                <Th>Unidad</Th>
-                                <Th>Precio de compra</Th>
-                                <Th>Precio de venta</Th>
-                                <Th>Description</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            {data && data.products.map((product, index) => (
+                    <Button colorScheme="teal" variant="outline" size="md" w="100%" my="15px">Registrar Producto</Button>
+                </Box>
+                <Table variant="simple">
+                    <Thead>
+                        <Tr>
+                            <Th>Producto</Th>
+                            <Th>Unidad</Th>
+                            <Th>Precio de compra</Th>
+                            <Th>Precio de venta</Th>
+                            <Th>Description</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {data.products &&
+                            data.products.map((product, index) => (
                                 <Tr key={index}>
-                                    <Td>{product && product.name}</Td>
-                                    <Td>{product && product.unid}</Td>
-                                    <Td>{product && product.historyPurchasePrice[0]}</Td>
+                                    <Td>{product.name}</Td>
+                                    <Td>{product.unid}</Td>
+                                    <Td>{product.historyPurchasePrice[0]}</Td>
                                     <Td isNumeric>
-                                        {product && product.hisrorySalePrice[0]}
+                                        {product.historySalePrice[0]}
                                     </Td>
-                                    <Td>{product && product.description}</Td>
+                                    <Td>{product.description}</Td>
                                 </Tr>
                             ))}
-                        </Tbody>
-                    </Table>
-                </Box>
-            </section>
+                    </Tbody>
+                </Table>
+            </Section>
         </div>
     );
 }

@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
             require: [true, "Please add the name"]
         },
         historyPurchasePrice: [],
-        hisrorySalePrice: [],
+        historySalePrice: [],
         unid: String,
         description: String
     },
