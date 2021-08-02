@@ -27,7 +27,7 @@ export default function Home({ store }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {data.products &&
+                        {data.products.length > 0 &&
                             data.products.map((product, index) => (
                                 <Tr key={index}>
                                     <Td>{product.name}</Td>
