@@ -5,7 +5,7 @@ export function FetchServicesCustomErrors({ endpoint, method = "GET", body }) {
 
     return fetch(endpoint, {
         method,
-        headers: {
+        headers: body && {
             "Content-Type": "application/json"
         },
         body: body && JSON.stringify(body)
